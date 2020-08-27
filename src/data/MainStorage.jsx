@@ -6,14 +6,17 @@ const { Provider } = TasksContext;
 const TasksProvider = ({ children }) => {
     let [taskList, setTaskList] = useState([]);
     let [complitedTasks, setComplitedTasks] = useState([])
+    let [recycleBinStorage, setRecycleBinStorage] = useState([])
     
     const state={
         taskList,
-        complitedTasks
+        complitedTasks,
+        recycleBinStorage
     };
     const actions={
         setTaskList,
-        setComplitedTasks
+        setComplitedTasks,
+        setRecycleBinStorage
     };
     return <Provider value={{ ...state, ...actions }}>{children}</Provider>;
   };  

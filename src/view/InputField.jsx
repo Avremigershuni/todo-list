@@ -1,10 +1,11 @@
 import React, { useState, useRef, useContext } from "react";
 import styled from "styled-components";
-import {TasksContext} from "../data/MainStorage"
+import {TasksContext} from "../data/MainStorage";
+import RecycleBin from "./RecycleBin";
 
 const InputField = () => {
   const {taskList, setTaskList}=useContext(TasksContext)
-  // let [taskList, setTaskList] = useState([]);
+  const [isRecycleBinOpen, setIsRecycleBinOpen] = useState(false);
   let newTaskInput = useRef();
 
   const taskAdder = () => {
@@ -17,7 +18,9 @@ const InputField = () => {
   return (
     <>
       <input ref={newTaskInput} type="text" placeholder="type a new task" />
-      <button onClick={()=>{taskAdder(setTaskList, newTaskInput)}}>123456</button>        
+      <button onClick={()=>{taskAdder(setTaskList, newTaskInput)}}>123456</button>     
+      <button onClick={()=>{setIsRecycleBinOpen(!isRecycleBinOpen)}}>recycle bin</button>   
+      {isRecycleBinOpen ? <RecycleBin/> : null}
     </>
   );
 };
